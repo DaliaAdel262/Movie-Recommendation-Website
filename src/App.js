@@ -10,17 +10,22 @@ import People from './components/People/index';
 import Tv from './components/Tv/index';
 import Movies from './components/Movies/index';
 import Navbar from './components/Navbar/index';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Details from './components/Details';
 
 export default function App() {
+  const navigate = useNavigate()
 
   const [userData, setUserData] = useState(null);
 
   function savaDataUser(){
     let encodedToken = localStorage.getItem('token');
-    let decdodedToken = jwtDecode(encodedToken);
-    setUserData(decdodedToken);
+    if(encodedToken){
+      let decdodedToken = jwtDecode(encodedToken);
+      setUserData(decdodedToken);
+    }else{
+      navigate('/login');
+    }
   }
 
   function logOut(){

@@ -68,7 +68,7 @@ export default function Register() {
     }
   };
   return (
-    <div className=''>
+    <div className='mb-3'>
       <div className='container w-50'>
         <h1 className='text-center mb-3'>Register</h1>
         {errorMsg.length>0 && (<h1 className='h6 alert alert-danger'>{errorMsg}</h1>)}
